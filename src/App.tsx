@@ -1,3 +1,5 @@
+import Dashboard from './pages/dashboard/Dashboard';
+
 function App(): JSX.Element {
   return (
     <div>
@@ -6,6 +8,7 @@ function App(): JSX.Element {
         Hello world!
       </h1>
       <p className="bg-sky-400">The quick brown fox...</p>
+      <Dashboard />
     </div>
   );
 }
