@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -8,7 +9,7 @@ function DropzoneContend(): JSX.Element {
   const {
     getRootProps,
     getInputProps,
-    isDragActive,
+
     isDragAccept,
     isFocused,
     isDragReject,
@@ -16,8 +17,6 @@ function DropzoneContend(): JSX.Element {
     accept: { 'image/*': [] },
     onDrop: async (acceptedFiles) => {
       const formData = new FormData();
-      console.log(acceptedFiles);
-
       formData.append('file', acceptedFiles[0]);
       formData.append('api_key', API_KEY);
       formData.append('public_id', 'sample_image');
@@ -34,90 +33,36 @@ function DropzoneContend(): JSX.Element {
       setFiles(acceptedFiles.map((file) => URL.createObjectURL(file)));
     },
   });
-  const thumbsContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 16,
-  };
-
-  const thumb = {
-    display: 'inline-flex',
-    borderRadius: 2,
-    border: '1px solid #eaeaea',
-    marginBottom: 8,
-    marginRight: 8,
-    width: 100,
-    height: 100,
-    padding: 4,
-    boxSizing: 'border-box',
-  };
-
-  const thumbInner = {
-    display: 'flex',
-    minWidth: 0,
-    overflow: 'hidden',
-  };
-
-  const img = {
-    display: 'block',
-    width: 'auto',
-    height: '100%',
-  };
   const style = useMemo(() => {
-    const baseStyle = {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '20px',
-      borderWidth: 2,
-      borderRadius: 2,
-      borderColor: '#eeeeee',
-      borderStyle: 'dashed',
-      backgroundColor: '#fafafa',
-      color: '#bdbdbd',
-      outline: 'none',
-      transition: 'border .24s ease-in-out',
-    };
-
-    const focusedStyle = {
-      borderColor: '#2196f3',
-    };
-
-    const acceptStyle = {
-      borderColor: '#00e676',
-    };
-
-    const rejectStyle = {
-      borderColor: '#ff1744',
-    };
-
-    return {
-      ...baseStyle,
-      ...(isFocused ? focusedStyle : {}),
-      ...(isDragAccept ? acceptStyle : {}),
-      ...(isDragReject ? rejectStyle : {}),
-    };
+    return `flex flex-col p-8 rounded-2xl border-2 border-dashed border-stone-900 bg-slate-200 ${
+      isFocused
+        ? 'bg-blue-600'
+        : isDragAccept
+        ? 'bg-green-600'
+        : isDragReject
+        ? 'bg-red-600'
+        : ''
+    }`;
   }, [isFocused, isDragAccept, isDragReject]);
-  const thumbs = files.map((file) => (
-    <div style={thumb} key={file}>
-      <div style={thumbInner}>
-        <img src={file} style={img} alt="test" />
-      </div>
-    </div>
-  ));
   return (
     <section>
-      <div {...getRootProps({ style })}>
+      <div {...getRootProps({ className: style })}>
         <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
+        {files.length ? (
+          <span className="text-black font-black text-2xl text-center">
+            Select New Image
+          </span>
         ) : (
-          <p>Drag drop some files here, or click to select files</p>
+          <span className="text-black font-black text-2xl text-center">
+            Click Here
+          </span>
         )}
       </div>
-      <div style={thumbsContainer}>{thumbs}</div>
+      {files[0] && (
+        <div className="max-h-full max-w-3xl">
+          <img src={files[0]} alt="test" />
+        </div>
+      )}
     </section>
   );
 }
