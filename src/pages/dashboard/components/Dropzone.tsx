@@ -1,11 +1,14 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
+import { AdvancedImage } from '@cloudinary/react';
+// import { backgroundRemoval } from '@cloudinary/url-gen/actions/effect';
 import { useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import API_KEY from '../../../constants';
+import cld from '../../../cloudinary';
+import { API_KEY, CLOUD_NAME } from '../../../constants';
 
 function DropzoneContend(): JSX.Element {
-  const [files, setFiles] = useState([]);
+  const [file, setFile] = useState<string>('');
   const {
     getRootProps,
     getInputProps,
@@ -20,17 +23,19 @@ function DropzoneContend(): JSX.Element {
       formData.append('file', acceptedFiles[0]);
       formData.append('api_key', API_KEY);
       formData.append('public_id', 'sample_image');
-      formData.append('upload_preset', 'nxrlsnnt');
+      formData.append('upload_preset', 'ml_default');
       formData.append('timestamp', `${Date.now()}`);
-      const response = await fetch(
-        'https://api.cloudinary.com/v1_1/dwtba7bmh/image/upload',
+      formData.append('background_removal', 'cloudinary_ai');
+      const sendImg = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
         {
           method: 'POST',
           body: formData,
         },
       );
-      console.log((await response).json());
-      setFiles(acceptedFiles.map((file) => URL.createObjectURL(file)));
+      const response = await sendImg.json();
+      console.log(response);
+      setFile(response.public_id);
     },
   });
   const style = useMemo(() => {
@@ -48,7 +53,7 @@ function DropzoneContend(): JSX.Element {
     <section>
       <div {...getRootProps({ className: style })}>
         <input {...getInputProps()} />
-        {files.length ? (
+        {file.length ? (
           <span className="text-black font-black text-2xl text-center">
             Select New Image
           </span>
@@ -58,11 +63,19 @@ function DropzoneContend(): JSX.Element {
           </span>
         )}
       </div>
-      {files[0] && (
+      {file.length && (
         <div className="max-h-full max-w-3xl">
-          <img src={files[0]} alt="test" />
+          <AdvancedImage cldImg={cld.image(file)} alt="test" />
         </div>
       )}
+      <button
+        type="button"
+        onClick={() => {
+          console.log('hola');
+        }}
+      >
+        Remove Background
+      </button>
     </section>
   );
 }
