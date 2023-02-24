@@ -4,34 +4,29 @@
       "name": "Instagram",
       "formats": [
         {
-          "profile": {
-            "w": 320,
-            "h": 320
-          }
+          "name": "profile",
+          "w": 320,
+          "h": 320
         },
         {
-          "story": {
-            "w": 1080,
-            "h": 1920
-          }
+          "name": "story",
+          "w": 1080,
+          "h": 1920
         },
         {
-          "cube": {
-            "w": 1080,
-            "h": 1080
-          }
+          "name": "cube",
+          "w": 1080,
+          "h": 1080
         },
         {
-          "portrait": {
-            "w": 1080,
-            "h": 1350
-          }
+          "name": "portrait",
+          "w": 1080,
+          "h": 1350
         },
         {
-          "landscape": {
-            "w": 1080,
-            "h": 566
-          }
+          "name": "landscape",
+          "w": 1080,
+          "h": 566
         }
       ]
     },
@@ -80,22 +75,19 @@
           "h": 400
         },
         {
-          "landscape": {
-            "w": 1200,
-            "h": 627
-          }
+          "name": "landscape",
+          "w": 1200,
+          "h": 627
         },
         {
-          "card": {
-            "w": 1200,
-            "h": 627
-          }
+          "name": "card",
+          "w": 1200,
+          "h": 627
         },
         {
-          "cover_photo": {
-            "w": 1584,
-            "h": 396
-          }
+          "name": "cover_photo",
+          "w": 1584,
+          "h": 396
         }
       ]
     },
@@ -104,16 +96,14 @@
       "formats": [
         { "name": "profile", "w": 800, "h": 800 },
         {
-          "banner": {
-            "w": 2048,
-            "h": 1152
-          }
+          "name": "banner",
+          "w": 2048,
+          "h": 1152
         },
         {
-          "thumbnail": {
-            "w": 1920,
-            "h": 1080
-          }
+          "name": "thumbnail",
+          "w": 1920,
+          "h": 1080
         }
       ]
     },
@@ -122,10 +112,9 @@
       "formats": [
         { "name": "profile", "w": 20, "h": 20 },
         {
-          "thumbnail": {
-            "w": 1080,
-            "h": 1920
-          }
+          "name": "thumbnail",
+          "w": 1080,
+          "h": 1920
         }
       ]
     }

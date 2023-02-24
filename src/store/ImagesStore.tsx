@@ -1,17 +1,18 @@
+import { CloudinaryImage } from '@cloudinary/url-gen';
 import { create } from 'zustand';
 
 interface IImgStore {
   publicUrl: string;
-  uploadUrl: string;
+  editUrl: CloudinaryImage | null;
   setPublicUrl: (publicUrl: string) => void;
-  setUploadUrl: (uploadUrl: string) => void;
+  setEditUrl: (editUrl: CloudinaryImage) => void;
 }
 
 const useImagesStore = create<IImgStore>()((set) => ({
   publicUrl: '',
-  uploadUrl: '',
+  editUrl: null,
   setPublicUrl: (publicUrl) => set(() => ({ publicUrl })),
-  setUploadUrl: (uploadUrl) => set(() => ({ uploadUrl })),
+  setEditUrl: (editUrl) => set(() => ({ editUrl })),
 }));
 
 export default useImagesStore;
