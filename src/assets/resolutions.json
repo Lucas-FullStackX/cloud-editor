@@ -1,0 +1,133 @@
+{
+  "sizes": [
+    {
+      "name": "Instagram",
+      "formats": [
+        {
+          "profile": {
+            "w": 320,
+            "h": 320
+          }
+        },
+        {
+          "story": {
+            "w": 1080,
+            "h": 1920
+          }
+        },
+        {
+          "cube": {
+            "w": 1080,
+            "h": 1080
+          }
+        },
+        {
+          "portrait": {
+            "w": 1080,
+            "h": 1350
+          }
+        },
+        {
+          "landscape": {
+            "w": 1080,
+            "h": 566
+          }
+        }
+      ]
+    },
+    {
+      "name": "Twitter",
+      "formats": [
+        {
+          "name": "profile",
+          "w": 400,
+          "h": 400
+        },
+        {
+          "name": "in-stream",
+          "w": 1600,
+          "h": 900
+        },
+        {
+          "name": "card",
+
+          "w": 814,
+          "h": 418
+        },
+        {
+          "name": "cube",
+          "w": 800,
+          "h": 800
+        },
+        {
+          "name": "conversation_card",
+          "w": 800,
+          "h": 418
+        },
+        {
+          "name": "cover_photo",
+          "w": 1500,
+          "h": 500
+        }
+      ]
+    },
+    {
+      "name": "LinkedIn",
+      "formats": [
+        {
+          "name": "profile",
+          "w": 400,
+          "h": 400
+        },
+        {
+          "landscape": {
+            "w": 1200,
+            "h": 627
+          }
+        },
+        {
+          "card": {
+            "w": 1200,
+            "h": 627
+          }
+        },
+        {
+          "cover_photo": {
+            "w": 1584,
+            "h": 396
+          }
+        }
+      ]
+    },
+    {
+      "name": "YouTube",
+      "formats": [
+        { "name": "profile", "w": 800, "h": 800 },
+        {
+          "banner": {
+            "w": 2048,
+            "h": 1152
+          }
+        },
+        {
+          "thumbnail": {
+            "w": 1920,
+            "h": 1080
+          }
+        }
+      ]
+    },
+    {
+      "name": "TikTok",
+      "formats": [
+        { "name": "profile", "w": 20, "h": 20 },
+        {
+          "thumbnail": {
+            "w": 1080,
+            "h": 1920
+          }
+        }
+      ]
+    }
+  ]
+}
